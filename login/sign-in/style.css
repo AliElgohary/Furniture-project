@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../../fonts/Roboto/Roboto-Regular.ttf') format('truetype');    
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #FFF;
+}
+
+form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #DBD0CCCC;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #DCE1DA;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+form div label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+form div input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #DBD0CCCC; 
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+form div input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+form  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #FFF; 
+    background-color: #007bff; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form div button:hover {
+    background-color: #0056b3;
+}
+
+.register p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.register a {
+    display: inline-block;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.register a:hover {
+    color: #0056b3;
+}
