@@ -28,35 +28,29 @@ const validateEmail = (email) => {
 const validateName = (name) => {
   return /^[a-z ,.'-]+$/i.test(String(name).toLowerCase());
 };
+document.getElementById("userForm").addEventListener("submit", function (event) {
+  event.preventDefault();
 
-document
-  .getElementById("userForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
+  let newUserName = document.getElementById("name").value;
+  let newUserEmail = document.getElementById("email").value;
+  let newUserPassword = document.getElementById("password").value;
 
-    let newUserName = document.getElementById("name").value;
-    let newUserEmail = document.getElementById("email").value;
-    let newUserPassword = document.getElementById("password").value;
+  let newUserNmaeValidation = validateName(newUserName);
+  let newUserEmailValidation = validateEmail(newUserEmail);
 
-    let newUserNmaeValidation = validateName(newUserName);
-    let newUserEmailValidation = validateEmail(newUserEmail);
-
-    try {
-      if (newUserNmaeValidation && newUserEmailValidation && newUserPassword) {
-        let users = JSON.parse(localStorage.getItem("users")) || [];
-
-        const newUser = new User(newUserName, newUserEmail, newUserPassword);
-
-        console.log(newUser);
-
-        users.push(newUser);
-        localStorage.setItem("users", JSON.stringify(users));
-      } else {
-        throw new Error(
-          "Invalid input. Please check your name, email, and password."
-        );
-      }
-    } catch (e) {
-      console.log(e);
+  try {
+    if (newUserNmaeValidation && newUserEmailValidation && newUserPassword) {
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      const newUser = new User(newUserName, newUserEmail, newUserPassword);
+      users.push(newUser);
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("loggedInUser", JSON.stringify(newUser));
+      console.log("User signed up successfully!");
+      window.location.href = "../../home/home.html";
+    } else {
+      throw new Error("Invalid input. Please check your name, email, and password.");
     }
-  });
+  } catch (e) {
+    console.log(e);
+  }
+});
