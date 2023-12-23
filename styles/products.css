@@ -116,9 +116,10 @@ ul.links{
   position: relative;
   display: flex;
   align-items: center;
-  column-gap: 15px;
+  column-gap: 35px;
   box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.2);
 }
+
 .item_img{
   width: 198px;
 }
@@ -148,4 +149,15 @@ ul.links{
 .main_btn.card_btn{
   border: 3px solid #ecebe9;
   margin: 3px 0 ;
+}
+#prod_code{
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: #3233349b;
+  font-size: 10px;
+  font-weight: 600;
+}
+.card_btn.for_admin{
+  display: none;
 }

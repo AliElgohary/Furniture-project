@@ -339,44 +339,12 @@ ul.links{
 .item{
     width: 100%;
     height: 100%;
-    position: relative;
     display: flex;
     align-items: center;
     column-gap: 15px;
+    position: relative;
 }
-/* .item:first-child{
-    background-image: url(../photos/Rectangle\ 26.png);
-}
-.item:nth-child(2){
-    background-image: url(../photos/Rectangle\ 27.png);
-}
-.item:nth-child(3){
-    background-image: url(../photos/Rectangle\ 28.png);
-}
-.item:nth-child(4){
-    background-image: url(../photos/Rectangle\ 29.png);
-}
-.item:nth-child(5){
-    background-image: url(../photos/Rectangle\ 30.png);
-}
-.item:nth-child(6){
-    background-image: url(../photos/Rectangle\ 31.png);
-}
-.item:nth-child(7){
-    background-image: url(../photos/Rectangle\ 32.png);
-}
-.item:nth-child(8){
-    background-image: url(../photos/Rectangle\ 33.png);
-}
-.item:nth-child(9){
-    background-image: url(../photos/Rectangle\ 34.png);
-} */
-/* .item .card_text{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 50%;
-} */
+
 .item_img{
     width: 45%;
 }
@@ -400,4 +368,12 @@ ul.links{
 }
 .card_btn.for_admin{
     display: none;
+}
+#prod_code{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: #3233349b;
+    font-size: 10px;
+    font-weight: 600;
 }
