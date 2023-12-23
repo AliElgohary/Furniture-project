@@ -1,10 +1,25 @@
 let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
 console.log("Logged-in user:", loggedInUser);
+let card_btn_user=document.getElementsByClassName('for_user');
+let card_btn_admin=document.getElementsByClassName('for_admin');
 
-if (loggedInUser.isAdmin === true) {
+if (loggedInUser.isAdmin == true) {
   console.log("user is admin");
-} else if (loggedInUser.isAdmin === false) {
-  console.log("user is not admin");
+  for(let btn of card_btn_admin){
+    btn.style.display='block';
+   }
+   for(let btn of card_btn_user){
+    btn.style.display='none';
+   }
+}
+if (loggedInUser.isAdmin == false) {
+  console.log("user is user");
+    for(let btn of card_btn_admin){
+      btn.style.display='none';
+    }
+    for(let btn of card_btn_user){
+      btn.style.display='block';
+    }
 }
 
 let loginElement = document.getElementById("login");
