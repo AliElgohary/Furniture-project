@@ -1,137 +1,165 @@
 [
     {
-        "id":0,
-        "name":"chair",
-        "image":"../products_img/Rectangle 26.png",
-        "price":"30"
+      "id": 0,
+      "name": "chair",
+      "image": "../products_img/Rectangle 26.png",
+      "price": "30"
     },
     {
-        "id":1,
-        "name":"chair",
-        "image":"../products_img/Rectangle 27.png",
-        "price":"30"
+      "id": 1,
+      "name": "chair",
+      "image": "../products_img/Rectangle 27.png",
+      "price": "30"
     },
     {
-        "id":2,
-        "name":"chair",
-        "image":"../products_img/Rectangle 28.png",
-        "price":"30"
+      "id": 2,
+      "name": "chair",
+      "image": "../products_img/Rectangle 28.png",
+      "price": "30"
     },
     {
-        "id":3,
-        "name":"chair",
-        "image":"../products_img/Rectangle 32.png",
-        "price":"30"
+      "id": 3,
+      "name": "chair",
+      "image": "../products_img/Rectangle 32.png",
+      "price": "30"
     },
     {
-        "id":4,
-        "name":"chair",
-        "image":"../products_img/Rectangle 31.png",
-        "price":"30"
+      "id": 4,
+      "name": "chair",
+      "image": "../products_img/Rectangle 31.png",
+      "price": "30"
     },
     {
-        "id":0,
-        "name":"chair",
-        "image":"../products_img/Rectangle 26.png",
-        "price":"30"
+      "id": 5,
+      "name": "chair",
+      "image": "../products_img/Rectangle 26.png",
+      "price": "30"
     },
     {
-        "id":1,
-        "name":"chair",
-        "image":"../products_img/Rectangle 27.png",
-        "price":"30"
+      "id": 6,
+      "name": "chair",
+      "image": "../products_img/Rectangle 27.png",
+      "price": "30"
     },
     {
-        "id":2,
-        "name":"chair",
-        "image":"../products_img/Rectangle 28.png",
-        "price":"30"
+      "id": 7,
+      "name": "chair",
+      "image": "../products_img/Rectangle 28.png",
+      "price": "30"
     },
     {
-        "id":3,
-        "name":"chair",
-        "image":"../products_img/Rectangle 32.png",
-        "price":"30"
+      "id": 8,
+      "name": "chair",
+      "image": "../products_img/Rectangle 32.png",
+      "price": "30"
     },
     {
-        "id":4,
-        "name":"chair",
-        "image":"../products_img/Rectangle 31.png",
-        "price":"30"
-    },{
-        "id":0,
-        "name":"chair",
-        "image":"../products_img/Rectangle 26.png",
-        "price":"30"
+      "id": 9,
+      "name": "chair",
+      "image": "../products_img/Rectangle 31.png",
+      "price": "30"
     },
     {
-        "id":1,
-        "name":"chair",
-        "image":"../products_img/Rectangle 27.png",
-        "price":"30"
+      "id": 10,
+      "name": "chair",
+      "image": "../products_img/Rectangle 26.png",
+      "price": "30"
     },
     {
-        "id":2,
-        "name":"chair",
-        "image":"../products_img/Rectangle 28.png",
-        "price":"30"
+      "id": 11,
+      "name": "chair",
+      "image": "../products_img/Rectangle 27.png",
+      "price": "30"
     },
     {
-        "id":3,
-        "name":"chair",
-        "image":"../products_img/Rectangle 32.png",
-        "price":"30"
+      "id": 12,
+      "name": "chair",
+      "image": "../products_img/Rectangle 28.png",
+      "price": "30"
     },
     {
-        "id":4,
-        "name":"chair",
-        "image":"../products_img/Rectangle 31.png",
-        "price":"30"
-    },    {
-        "id":1,
-        "name":"chair",
-        "image":"../products_img/Rectangle 27.png",
-        "price":"30"
+      "id": 13,
+      "name": "chair",
+      "image": "../products_img/Rectangle 32.png",
+      "price": "30"
     },
     {
-        "id":2,
-        "name":"chair",
-        "image":"../products_img/Rectangle 28.png",
-        "price":"30"
+      "id": 14,
+      "name": "chair",
+      "image": "../products_img/Rectangle 31.png",
+      "price": "30"
     },
     {
-        "id":3,
-        "name":"chair",
-        "image":"../products_img/Rectangle 32.png",
-        "price":"30"
+      "id": 15,
+      "name": "chair",
+      "image": "../products_img/Rectangle 27.png",
+      "price": "30"
     },
     {
-        "id":4,
-        "name":"chair",
-        "image":"../products_img/Rectangle 31.png",
-        "price":"30"
-    },    {
-        "id":1,
-        "name":"chair",
-        "image":"../products_img/Rectangle 27.png",
-        "price":"30"
+      "id": 16,
+      "name": "chair",
+      "image": "../products_img/Rectangle 28.png",
+      "price": "30"
     },
     {
-        "id":2,
-        "name":"chair",
-        "image":"../products_img/Rectangle 28.png",
-        "price":"30"
+      "id": 17,
+      "name": "chair",
+      "image": "../products_img/Rectangle 32.png",
+      "price": "30"
     },
     {
-        "id":3,
-        "name":"chair",
-        "image":"../products_img/Rectangle 32.png",
-        "price":"30"
+      "id": 18,
+      "name": "chair",
+      "image": "../products_img/Rectangle 31.png",
+      "price": "30"
     },
     {
-        "id":4,
-        "name":"chair",
-        "image":"../products_img/Rectangle 31.png",
-        "price":"30"
+      "id": 19,
+      "name": "chair",
+      "image": "../products_img/Rectangle 27.png",
+      "price": "30"
+    },
+    {
+      "id": 20,
+      "name": "chair",
+      "image": "../products_img/Rectangle 28.png",
+      "price": "30"
+    },
+    {
+      "id": 21,
+      "name": "chair",
+      "image": "../products_img/Rectangle 32.png",
+      "price": "30"
+    },
+    {
+      "id": 22,
+      "name": "chair",
+      "image": "../products_img/Rectangle 31.png",
+      "price": "30"
+    },
+    {
+      "id": 23,
+      "name": "chair",
+      "image": "../products_img/Rectangle 27.png",
+      "price": "30"
+    },
+    {
+      "id": 24,
+      "name": "chair",
+      "image": "../products_img/Rectangle 28.png",
+      "price": "30"
+    },
+    {
+      "id": 25,
+      "name": "chair",
+      "image": "../products_img/Rectangle 32.png",
+      "price": "30"
+    },
+    {
+      "id": 26,
+      "name": "chair",
+      "image": "../products_img/Rectangle 31.png",
+      "price": "30"
     }
-]
+  ]
+  

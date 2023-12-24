@@ -1,11 +1,10 @@
 let card_btn_user = document.getElementsByClassName("for_user");
 let card_btn_admin = document.getElementsByClassName("for_admin");
 
-
 let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
 
-if (!loggedInUser.isAdmin){
-  document.getElementById('addNewProduct').style.display = 'none';
+if (!loggedInUser.isAdmin) {
+  document.getElementById("addNewProduct").style.display = "none";
 }
 
 let loginElement = document.getElementById("login");
@@ -28,6 +27,14 @@ let allProd = [];
 let displayedProducts = 9;
 let productsToAdd = 9;
 
+const deleteProduct = (productId) => {
+  const index = allProd.findIndex((prod) => prod.id === productId);
+  if (index !== -1) {
+    allProd.splice(index, 1);
+  }
+  addProductsToDom();
+};
+
 const addProductsToDom = () => {
   products_dom.innerHTML = "";
 
@@ -49,13 +56,26 @@ const addProductsToDom = () => {
                     <h3 class="price">${prod.price} $</h3>
                     ${
                       loggedInUser.isAdmin
-                        ? `<button class="main_btn card_btn">Edit</button><br>
-                           <button class="main_btn card_btn">Delete</button>`
+                        ? `<button class="main_btn card_btn edit-btn">Edit</button><br />
+                           <button class="main_btn card_btn delete-btn">Delete</button>`
                         : `<button class="main_btn card_btn">Add to Cart</button>`
                     }
                     <span id="prod_code">code: ${prod.id}</span>
                 </div>
       `;
+
+      if (loggedInUser.isAdmin) {
+        let deleteButton = new_prod.querySelector(".delete-btn");
+        deleteButton.addEventListener("click", () => {
+          deleteProduct(prod.id);
+        });
+
+        // we should apply the Edit functoinality here
+        let editButton = new_prod.querySelector(".edit-btn");
+        editButton.addEventListener("click", () => {
+          console.log("Edit button clicked for product ID:", prod.id);
+        });
+      }
 
       products_dom.appendChild(new_prod);
     });
@@ -86,7 +106,5 @@ const loadMoreProducts = () => {
 document
   .querySelector(".load_more")
   .addEventListener("click", loadMoreProducts);
-
-
 
 getData();
