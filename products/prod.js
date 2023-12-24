@@ -35,6 +35,24 @@ const deleteProduct = (productId) => {
   addProductsToDom();
 };
 
+const addToCart = (productId) => {
+  if (!loggedInUser.cart) {
+    window.location.href = "/login/sign-in/index.html";
+    return;
+  }
+
+  const alreadyInCart = loggedInUser.cart.some((item) => item.id === productId);
+
+  if (!alreadyInCart) {
+    const selectedProduct = allProd.find((prod) => prod.id === productId);
+    loggedInUser.cart = [...loggedInUser.cart, selectedProduct];
+    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    console.log(loggedInUser.cart);
+  } else {
+    alert("Product is already in the cart!");
+  }
+};
+
 const addProductsToDom = () => {
   products_dom.innerHTML = "";
 
@@ -58,7 +76,7 @@ const addProductsToDom = () => {
                       loggedInUser.isAdmin
                         ? `<button class="main_btn card_btn edit-btn">Edit</button><br />
                            <button class="main_btn card_btn delete-btn">Delete</button>`
-                        : `<button class="main_btn card_btn">Add to Cart</button>`
+                        : `<button class="main_btn card_btn add-to-cart-btn">Add to Cart</button>`
                     }
                     <span id="prod_code">code: ${prod.id}</span>
                 </div>
@@ -74,6 +92,11 @@ const addProductsToDom = () => {
         let editButton = new_prod.querySelector(".edit-btn");
         editButton.addEventListener("click", () => {
           console.log("Edit button clicked for product ID:", prod.id);
+        });
+      } else if (!loggedInUser.isAdmin) {
+        let addToCartButton = new_prod.querySelector(".add-to-cart-btn");
+        addToCartButton.addEventListener("click", () => {
+          addToCart(prod.id);
         });
       }
 
