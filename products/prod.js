@@ -1,7 +1,12 @@
 let card_btn_user = document.getElementsByClassName("for_user");
 let card_btn_admin = document.getElementsByClassName("for_admin");
 
+
 let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
+
+if (!loggedInUser.isAdmin){
+  document.getElementById('addNewProduct').style.display = 'none';
+}
 
 let loginElement = document.getElementById("login");
 
@@ -81,5 +86,7 @@ const loadMoreProducts = () => {
 document
   .querySelector(".load_more")
   .addEventListener("click", loadMoreProducts);
+
+
 
 getData();
