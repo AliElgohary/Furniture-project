@@ -2,25 +2,130 @@
     {
         "id":0,
         "name":"chair",
-        "image":"../products_img/Rectangle 31.png",
+        "image":"../products_img/Rectangle 26.png",
         "price":"30"
     },
     {
         "id":1,
         "name":"chair",
-        "image":"../products_img/Rectangle 31.png",
+        "image":"../products_img/Rectangle 27.png",
         "price":"30"
     },
     {
         "id":2,
         "name":"chair",
-        "image":"../products_img/Rectangle 31.png",
+        "image":"../products_img/Rectangle 28.png",
         "price":"30"
     },
     {
         "id":3,
         "name":"chair",
+        "image":"../products_img/Rectangle 32.png",
+        "price":"30"
+    },
+    {
+        "id":4,
+        "name":"chair",
         "image":"../products_img/Rectangle 31.png",
+        "price":"30"
+    },
+    {
+        "id":0,
+        "name":"chair",
+        "image":"../products_img/Rectangle 26.png",
+        "price":"30"
+    },
+    {
+        "id":1,
+        "name":"chair",
+        "image":"../products_img/Rectangle 27.png",
+        "price":"30"
+    },
+    {
+        "id":2,
+        "name":"chair",
+        "image":"../products_img/Rectangle 28.png",
+        "price":"30"
+    },
+    {
+        "id":3,
+        "name":"chair",
+        "image":"../products_img/Rectangle 32.png",
+        "price":"30"
+    },
+    {
+        "id":4,
+        "name":"chair",
+        "image":"../products_img/Rectangle 31.png",
+        "price":"30"
+    },{
+        "id":0,
+        "name":"chair",
+        "image":"../products_img/Rectangle 26.png",
+        "price":"30"
+    },
+    {
+        "id":1,
+        "name":"chair",
+        "image":"../products_img/Rectangle 27.png",
+        "price":"30"
+    },
+    {
+        "id":2,
+        "name":"chair",
+        "image":"../products_img/Rectangle 28.png",
+        "price":"30"
+    },
+    {
+        "id":3,
+        "name":"chair",
+        "image":"../products_img/Rectangle 32.png",
+        "price":"30"
+    },
+    {
+        "id":4,
+        "name":"chair",
+        "image":"../products_img/Rectangle 31.png",
+        "price":"30"
+    },    {
+        "id":1,
+        "name":"chair",
+        "image":"../products_img/Rectangle 27.png",
+        "price":"30"
+    },
+    {
+        "id":2,
+        "name":"chair",
+        "image":"../products_img/Rectangle 28.png",
+        "price":"30"
+    },
+    {
+        "id":3,
+        "name":"chair",
+        "image":"../products_img/Rectangle 32.png",
+        "price":"30"
+    },
+    {
+        "id":4,
+        "name":"chair",
+        "image":"../products_img/Rectangle 31.png",
+        "price":"30"
+    },    {
+        "id":1,
+        "name":"chair",
+        "image":"../products_img/Rectangle 27.png",
+        "price":"30"
+    },
+    {
+        "id":2,
+        "name":"chair",
+        "image":"../products_img/Rectangle 28.png",
+        "price":"30"
+    },
+    {
+        "id":3,
+        "name":"chair",
+        "image":"../products_img/Rectangle 32.png",
         "price":"30"
     },
     {

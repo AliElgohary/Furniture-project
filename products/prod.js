@@ -1,25 +1,11 @@
-
 let card_btn_user = document.getElementsByClassName("for_user");
 let card_btn_admin = document.getElementsByClassName("for_admin");
 
+
 let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
-// console.log("Logged-in user:", loggedInUser);
-if (loggedInUser.isAdmin == true) {
-  console.log("user is admin");
-  for (let btn of card_btn_admin) {
-    btn.style.display = "block";
-  }
-  for (let btn of card_btn_user) {
-    btn.style.display = "none";
-  }
-} else {
-  console.log("user is user");
-  for (let btn of card_btn_admin) {
-    btn.style.display = "none";
-  }
-  for (let btn of card_btn_user) {
-    btn.style.display = "block";
-  }
+
+if (!loggedInUser.isAdmin){
+  document.getElementById('addNewProduct').style.display = 'none';
 }
 
 let loginElement = document.getElementById("login");
@@ -37,37 +23,19 @@ if (Object.keys(loggedInUser).length !== 0) {
   });
 }
 
+let products_dom = document.getElementById("products");
+let allProd = [];
+let displayedProducts = 9;
+let productsToAdd = 9;
 
-// let loginElement = document.getElementById("login");
+const addProductsToDom = () => {
+  products_dom.innerHTML = "";
 
-// if (Object.keys(loggedInUser).length !== 0) {
-//   loginElement.innerHTML = `Log out`;
-//   loginElement.addEventListener("click", function () {
-//     localStorage.removeItem("loggedInUser");
-//     location.reload();
-//   });
-// } else {
-//   loginElement.innerHTML = `Log In`;
-//   loginElement.addEventListener("click", function () {
-//     window.location.href = "http://127.0.0.1:5500/login/sign-in/index.html";
-//   });
-// }
-
-// ------------------------
-//fetch data from json file
-let products_dom=document.getElementById('products');
-console.log(products);
-let allProd=[];
-const addProductsToDom=()=>{
-  
-  products_dom.innerHTML='';
-
-  if(allProd.length>0){
-    allProd.forEach(prod=>{
-      console.log(prod)
-      let new_prod=document.createElement('div');
-      new_prod.classList.add('item');
-      new_prod.innerHTML=`
+  if (allProd.length > 0) {
+    allProd.slice(0, displayedProducts).forEach((prod) => {
+      let new_prod = document.createElement("div");
+      new_prod.classList.add("item");
+      new_prod.innerHTML = `
                 <img class="item_img" src="${prod.image}" alt="">
                 <div class="card_text">
                     <h4>${prod.name}</h4>
@@ -78,58 +46,47 @@ const addProductsToDom=()=>{
                         <i class="star fa-regular fa-star"></i>
                         <i class="star fa-regular fa-star"></i>
                     </div>
-                    <h3 class="price">${prod.price}</h3>
-                    <button class="main_btn card_btn for_user">add to card</button>
-                    <button class="main_btn card_btn for_admin">update</button>
-                    <button class="main_btn card_btn for_admin">delete</button>
+                    <h3 class="price">${prod.price} $</h3>
+                    ${
+                      loggedInUser.isAdmin
+                        ? `<button class="main_btn card_btn">Edit</button><br>
+                           <button class="main_btn card_btn">Delete</button>`
+                        : `<button class="main_btn card_btn">Add to Cart</button>`
+                    }
                     <span id="prod_code">code: ${prod.id}</span>
                 </div>
+      `;
 
-      `
       products_dom.appendChild(new_prod);
-    })
-  } 
-}
-const getData=()=>{
+    });
+  }
+};
+
+const getData = () => {
   fetch("../products.json")
-  .then(d=>d.json())
-  .then(d=>{
-    allProd=d;
+    .then((response) => response.json())
+    .then((data) => {
+      allProd = data;
+      addProductsToDom();
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+};
+
+const loadMoreProducts = () => {
+  const remainingProducts = allProd.length - displayedProducts;
+  if (remainingProducts > 0) {
+    const productsToDisplay = Math.min(productsToAdd, remainingProducts);
+    displayedProducts += productsToDisplay;
     addProductsToDom();
-  });
-}
+  }
+};
+
+document
+  .querySelector(".load_more")
+  .addEventListener("click", loadMoreProducts);
+
+
+
 getData();
-
-
-
-
-
-
-
-
-// let card_btn_user=document.getElementsByClassName('for_user');
-// let card_btn_admin=document.getElementsByClassName('for_admin');
-
-
-// let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
-
-//   if (loggedInUser.isAdmin == true) {
-//     console.log("user is admin");
-//     for(let btn of card_btn_admin){
-//       btn.style.display='block';
-//      }
-//      for(let btn of card_btn_user){
-//       btn.style.display='none';
-//      }
-// }
-// if (loggedInUser.isAdmin == false) {
-//     console.log("user is user");
-//       for(let btn of card_btn_admin){
-//         btn.style.display='none';
-//       }
-//       for(let btn of card_btn_user){
-//         btn.style.display='block';
-//       }
-// }
-
-
