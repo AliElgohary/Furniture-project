@@ -17,6 +17,7 @@ users.push(user);
 
 const admin = new User("admin", "admin@example.com", "secret", true);
 users.push(admin);
+localStorage.setItem("users", JSON.stringify(users));
 
 console.log(users);
 const validateEmail = (email) => {
