@@ -4,7 +4,7 @@ let card_btn_admin = document.getElementsByClassName("for_admin");
 let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
 
 if (!loggedInUser.isAdmin) {
-  document.getElementById("addNewProduct").style.display = "none";
+  document.getElementById("add_prod").style.display = "none";
 }
 
 let loginElement = document.getElementById("login");
@@ -14,13 +14,15 @@ if (Object.keys(loggedInUser).length !== 0) {
   loginElement.addEventListener("click", function () {
     localStorage.removeItem("loggedInUser");
     location.reload();
-  });
-} else {
+  })
+} else if (Object.keys(loggedInUser).length === 0) {
   loginElement.innerHTML = `Log In`;
   loginElement.addEventListener("click", function () {
-    window.location.href = "http://127.0.0.1:5500/login/sign-in/index.html";
+    window.location.href = "/login/sign-in/index.html";
   });
 }
+
+
 
 let products_dom = document.getElementById("products");
 let allProd = [];
@@ -55,7 +57,7 @@ const addToCart = (productId) => {
 
 const addProductsToDom = () => {
   products_dom.innerHTML = "";
-  
+
   if (allProd.length > 0) {
     allProd.slice(0, displayedProducts).forEach((prod) => {
       let new_prod = document.createElement("div");
@@ -76,8 +78,8 @@ const addProductsToDom = () => {
                       loggedInUser.isAdmin
                         ? `<button class="main_btn card_btn edit-btn">Edit</button><br />
                             <button class="main_btn card_btn delete-btn">Delete</button>`
-                            : `<button class="main_btn card_btn add-to-cart-btn">Add to Cart</button>`
-                          }
+                        : `<button class="main_btn card_btn add-to-cart-btn">Add to Cart</button>`
+                    }
                     <span id="prod_code">code: ${prod.id}</span>
                 </div>
       `;
@@ -106,35 +108,36 @@ const addProductsToDom = () => {
 };
 // *******************************add new_product*******************
 
-let add_prod_box=document.getElementById('add_box');
-let add_prod_btn=document.getElementById("add_prod");
-add_prod_btn.addEventListener('click',()=>{
-      add_prod_box.classList.remove('hide');
-})
+let add_prod_box = document.getElementById("add_box");
+let add_prod_btn = document.getElementById("add_prod");
+add_prod_btn.addEventListener("click", () => {
+  add_prod_box.classList.remove("hide");
+});
 // on submit (add prod)
-function add_prod_data(event){
+function add_prod_data(event) {
   event.preventDefault();
-  let name=event.target.children[0].value;
-  let price=event.target.children[1].value;
-  let img=event.target.children[2].value?`../products_img/${event.target.children[2].files[0].name}`:"../products_img/img_not.jpg";
-  console.log(img)
-  const new_prod=
-              {
-                "id": allProd.length,
-                "name": name,
-                "image": img,
-                "price": price
-              };
-    if(name&&price&&img){
-      allProd.unshift(new_prod);
-      addProductsToDom();
-      add_prod_box.classList.add("hide");
-      console.log(add_prod_box)
-    }  
+  let name = event.target.children[0].value;
+  let price = event.target.children[1].value;
+  let img = event.target.children[2].value
+    ? `../products_img/${event.target.children[2].files[0].name}`
+    : "../products_img/img_not.jpg";
+  console.log(img);
+  const new_prod = {
+    id: allProd.length,
+    name: name,
+    image: img,
+    price: price,
+  };
+  if (name && price && img) {
+    allProd.unshift(new_prod);
+    addProductsToDom();
+    add_prod_box.classList.add("hide");
+    console.log(add_prod_box);
   }
-  function hide_box(){
-    add_prod_box.classList.add('hide');
-  }        
+}
+function hide_box() {
+  add_prod_box.classList.add("hide");
+}
 const getData = () => {
   fetch("../products.json")
     .then((response) => response.json())
