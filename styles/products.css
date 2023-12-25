@@ -169,7 +169,7 @@ ul.links{
   bottom: 0;
   background-color: #323334c0;
 }
-.hide{
+.hide , #search_input.hide{
   display: none;
 }
 .add_product_data , .edit{
@@ -262,4 +262,18 @@ ul.links{
   left: 50%;
   border-radius: 50%;
   font-size: 12px;
+}
+#search_input{
+  width: 350px;
+  height: 35px;
+  background-color: #eee;
+  border: none;
+  border-bottom: 2px solid #A86A3D;
+  border-left: 2px solid #A86A3D;
+  outline: none;
+  text-indent: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  margin: 15px 0;
 }
