@@ -71,16 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
           orderHistoryTable.appendChild(orderItemRow);
         });
       });
-
-      // Show the order history section
       orderHistorySection.style.display = "block";
     } else {
-      // Hide the order history section if there is no order history
       orderHistorySection.style.display = "none";
     }
   }
 
-  // Initial display update
   updateCartDisplay();
   updateOrderHistoryDisplay();
 
