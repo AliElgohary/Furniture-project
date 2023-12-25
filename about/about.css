@@ -57,5 +57,15 @@
   .contact-btn:hover {
     background-color: #555;
   }
+  @media screen and (max-width: 768px){
+    .team-member img{
+      width: 80px;
+      height: 80px;
+  }
+  .team-member p {
+    margin-top: 7px;
+    font-size: 9px;
+  }
+  }
   
   
