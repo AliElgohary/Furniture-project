@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   const cartInfo = document.getElementById("cartInfo");
-  const orderHistorySection = document.querySelector('.order-history-section');
-  const orderHistoryTable = document.getElementById('orderHistoryTable');
-  const totalAmount = document.getElementById('totalAmount');
+  const orderHistorySection = document.querySelector(".order-history-section");
+  const orderHistoryTable = document.getElementById("orderHistoryTable");
+  const totalAmount = document.getElementById("totalAmount");
 
   function updateCartDisplay() {
     if (user && user.cart && user.cart.length > 0) {
@@ -71,20 +71,34 @@ document.addEventListener("DOMContentLoaded", function () {
           orderHistoryTable.appendChild(orderItemRow);
         });
       });
-      orderHistorySection.style.display = 'block';
+
+      // Show the order history section
+      orderHistorySection.style.display = "block";
     } else {
-      orderHistorySection.style.display = 'none';
+      // Hide the order history section if there is no order history
+      orderHistorySection.style.display = "none";
     }
   }
+
+  // Initial display update
   updateCartDisplay();
   updateOrderHistoryDisplay();
+
   const checkoutButton = document.getElementById("confirmOrder");
-  checkoutButton.addEventListener('click', function () {
+  checkoutButton.addEventListener("click", function () {
     if (user) {
-      const orderCopy = user.cart.map(item => ({ ...item }));
-      user.orderHistory.push(orderCopy);
+      if (!user.orderHistory) {
+        user.orderHistory = [];
+      }
+      const orderCopy = user.cart.map((item) => ({ ...item }));
+      if (orderCopy.length > 0) {
+        user.orderHistory.push(orderCopy);
+      }
+
       user.cart = [];
+
       localStorage.setItem("loggedInUser", JSON.stringify(user));
+
       updateCartDisplay();
       updateOrderHistoryDisplay();
     } else {
