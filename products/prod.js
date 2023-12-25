@@ -5,6 +5,7 @@ let add_prod_btn = document.getElementById("add_prod");
 
 let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
 
+console.log(loggedInUser);
 if (!loggedInUser.isAdmin) {
   document.getElementById("add_prod").style.display = "none";
 }
@@ -23,9 +24,6 @@ if (Object.keys(loggedInUser).length !== 0) {
     window.location.href = "/login/sign-in/index.html";
   });
 }
-
-
-
 let products_dom = document.getElementById("products");
 let allProd = [];
 let displayedProducts = 9;
@@ -88,7 +86,6 @@ const addToCart = (productId) => {
     window.location.href = "/login/sign-in/index.html";
     return;
   }
-
   const alreadyInCart = loggedInUser.cart.some((item) => item.id === productId);
 
   if (!alreadyInCart) {
@@ -96,10 +93,19 @@ const addToCart = (productId) => {
     loggedInUser.cart = [...loggedInUser.cart, selectedProduct];
     localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
     console.log(loggedInUser.cart);
+    prodCount();
   } else {
     alert("Product is already in the cart!");
   }
 };
+const prodCount=()=>{
+  const prod_count=document.getElementById("prod_count");
+  if(loggedInUser.cart){
+    prod_count.innerHTML=loggedInUser.cart.length;
+  }
+  return;
+}
+prodCount()
 
 const addProductsToDom = () => {
   products_dom.innerHTML = "";

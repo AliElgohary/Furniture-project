@@ -253,3 +253,13 @@ ul.links{
   margin-top: 5px;
   color: #3233349b;
 }
+#prod_count{
+  background: tomato;
+  color: #fff;
+  padding: 3px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  font-size: 12px;
+}
