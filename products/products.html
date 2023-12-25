@@ -49,11 +49,23 @@
             <div class="grid_box" id="products">
                 
             </div>
-            <button class="load_btn load_more">LOAD MORE PRODUCTS</button>
-            <button class="load_btn for_admin" id="addNewProduct">Add New Product</button>
-            
         </div>
+        <button class="load_btn load_more">LOAD MORE PRODUCTS</button>
+        <button class="load_btn for_admin" id="add_prod">Add New Product</button>
+        <div class="bg hide" id="add_box">
+            <div class="add_product_data" id="add_product_data">
+                <form onsubmit="add_prod_data(event)">
+                    <input type="text" name="" placeholder="enter product name" id="">
+                    <input type="text" name="" placeholder="price" id="">
+                    <input type="file" accept=".png, .jpg, .jpeg">
+                    
+                     <input type="submit" value="ADD">
+                     <input type="button" onclick="hide_box()" value="Cancel">
+                    
+                </form>
+            </div>
         </div>
+    </div>
         
         <script src="prod.js"></script>
     </body>

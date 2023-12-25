@@ -367,7 +367,7 @@ ul.links{
     border: 3px solid #ecebe9;
 }
 .card_btn.for_admin{
-    display: none;
+    /* display: none; */
 }
 #prod_code{
     position: absolute;
