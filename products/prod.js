@@ -55,7 +55,7 @@ const addToCart = (productId) => {
 
 const addProductsToDom = () => {
   products_dom.innerHTML = "";
-
+  
   if (allProd.length > 0) {
     allProd.slice(0, displayedProducts).forEach((prod) => {
       let new_prod = document.createElement("div");
@@ -65,7 +65,7 @@ const addProductsToDom = () => {
                 <div class="card_text">
                     <h4>${prod.name}</h4>
                     <div class="rating">
-                        <i class="star fa-solid fa-star star_done"></i>
+                    <i class="star fa-solid fa-star star_done"></i>
                         <i class="star fa-solid fa-star star_done"></i>
                         <i class="star fa-solid fa-star star_done"></i>
                         <i class="star fa-regular fa-star"></i>
@@ -75,9 +75,9 @@ const addProductsToDom = () => {
                     ${
                       loggedInUser.isAdmin
                         ? `<button class="main_btn card_btn edit-btn">Edit</button><br />
-                           <button class="main_btn card_btn delete-btn">Delete</button>`
-                        : `<button class="main_btn card_btn add-to-cart-btn">Add to Cart</button>`
-                    }
+                            <button class="main_btn card_btn delete-btn">Delete</button>`
+                            : `<button class="main_btn card_btn add-to-cart-btn">Add to Cart</button>`
+                          }
                     <span id="prod_code">code: ${prod.id}</span>
                 </div>
       `;
@@ -104,7 +104,37 @@ const addProductsToDom = () => {
     });
   }
 };
+// *******************************add new_product*******************
 
+let add_prod_box=document.getElementById('add_box');
+let add_prod_btn=document.getElementById("add_prod");
+add_prod_btn.addEventListener('click',()=>{
+      add_prod_box.classList.remove('hide');
+})
+// on submit (add prod)
+function add_prod_data(event){
+  event.preventDefault();
+  let name=event.target.children[0].value;
+  let price=event.target.children[1].value;
+  let img=event.target.children[2].value?`../products_img/${event.target.children[2].files[0].name}`:"../products_img/img_not.jpg";
+  console.log(img)
+  const new_prod=
+              {
+                "id": allProd.length,
+                "name": name,
+                "image": img,
+                "price": price
+              };
+    if(name&&price&&img){
+      allProd.unshift(new_prod);
+      addProductsToDom();
+      add_prod_box.classList.add("hide");
+      console.log(add_prod_box)
+    }  
+  }
+  function hide_box(){
+    add_prod_box.classList.add('hide');
+  }        
 const getData = () => {
   fetch("../products.json")
     .then((response) => response.json())

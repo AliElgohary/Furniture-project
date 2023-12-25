@@ -161,3 +161,71 @@ ul.links{
 .card_btn.for_admin{
   display: none;
 }
+.bg{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #323334c0;
+}
+.hide{
+  display: none;
+}
+.add_product_data{
+  width: 350px;
+  height: 400px;
+  background-color: #7d5f49;
+  border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+.add_product_data form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}
+.add_product_data form input{
+  width: 300px;
+  height: 35px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 18px;
+}
+.add_product_data [type="text"]{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-bottom: 2px solid #F2C94C;
+  margin-bottom: 10px;
+  height: 40px;
+}
+.add_product_data [type="text"]::placeholder{
+  color: #F2C94C;
+}
+.btns{
+  margin: 40px 0;
+  text-align: center;
+}
+.add_product_data [type="submit"] , 
+.add_product_data [type="button"]{
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  width: 160px;
+  margin: 15px auto;
+  font-weight: 600;
+  background-color: #323334;
+  color: #fff;
+  display: block;
+transition: .2s;
+}
+.add_product_data [type="submit"]:hover , 
+.add_product_data [type="button"]:hover{
+  background-color: #000;
+  color: #F2C94C;
+}
