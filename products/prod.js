@@ -1,5 +1,7 @@
 let card_btn_user = document.getElementsByClassName("for_user");
 let card_btn_admin = document.getElementsByClassName("for_admin");
+let add_prod_box = document.getElementById("add_box");
+let add_prod_btn = document.getElementById("add_prod");
 
 let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser")) || {};
 
@@ -36,7 +38,51 @@ const deleteProduct = (productId) => {
   }
   addProductsToDom();
 };
-
+// **************************
+// edit product
+const editProduct=(id)=>{
+    target_prod=allProd.filter(p=>p.id==id)[0];
+    console.log(target_prod)
+    add_prod_box.innerHTML="";
+    add_prod_box.classList.remove('hide');
+    let edit_form=`
+        <form onsubmit="edit(event , ${id})" class="edit">
+            <label>name:</label>
+            <input type="text" id="name" value=${target_prod.name}>
+            <label>price:</label>
+            <input type="text" id="price" value=${target_prod.price} id="">
+            <label>category:</label>
+            <input type="text" id="category" value=${target_prod.category} id="">
+            <label for="description">description</label>
+            <textarea id="description" id="description" rows="2" cols="30">${target_prod.description}</textarea>
+            <label>image:</label>
+            <input type="file" id="image" accept=".png, .jpg, .jpeg">
+            <input type="submit" value="Edit">
+            <input type="button" onclick="hide_box()" value="Cancel">
+        </form>
+    `
+    add_prod_box.innerHTML=edit_form;
+}
+function edit(event , id){
+    event.preventDefault();
+    let name=event.target.querySelector("#name").value;
+    let price=event.target.querySelector("#price").value;
+    let description=event.target.querySelector("#description").value;
+    let category=event.target.querySelector("#category").value;
+    let image=event.target.querySelector("#image").value
+              ? `../products_img/${event.target.querySelector("#image").files[0].name}`
+              : "../products_img/img_not.jpg";
+    let editProd={
+      id:id,
+      name:name,
+      price:price,
+      description:description,
+      category:category,
+      image:image
+    }
+    allProd.splice(id,1,editProd);
+    addProductsToDom();
+}
 const addToCart = (productId) => {
   if (!loggedInUser.cart) {
     window.location.href = "/login/sign-in/index.html";
@@ -97,7 +143,9 @@ const addProductsToDom = () => {
         let editButton = new_prod.querySelector(".edit-btn");
         editButton.addEventListener("click", () => {
           console.log("Edit button clicked for product ID:", prod.id);
+          editProduct(prod.id);
         });
+
       } else if (!loggedInUser.isAdmin) {
         let addToCartButton = new_prod.querySelector(".add-to-cart-btn");
         addToCartButton.addEventListener("click", () => {
@@ -111,9 +159,21 @@ const addProductsToDom = () => {
 };
 // *******************************add new_product*******************
 
-let add_prod_box = document.getElementById("add_box");
-let add_prod_btn = document.getElementById("add_prod");
+
 add_prod_btn.addEventListener("click", () => {
+  add_prod_box.innerHTML="";
+  let add_form=`
+      <div class="add_product_data" id="add_product_data">
+        <form onsubmit="add_prod_data(event)">
+            <input type="text" name="" placeholder="enter product name" id="">
+            <input type="text" name="" placeholder="price" id="">
+            <input type="file" accept=".png, .jpg, .jpeg">
+             <input type="submit" value="ADD">
+             <input type="button" onclick="hide_box()" value="Cancel">
+        </form>
+      </div>
+  `
+  add_prod_box.innerHTML=add_form;
   add_prod_box.classList.remove("hide");
 });
 // on submit (add prod)
