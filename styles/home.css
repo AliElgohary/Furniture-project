@@ -216,6 +216,7 @@ ul.links{
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.40);
     z-index: 0;
+    z-index: 0;
 }
 .card3_text h3{
     color: #FFF;
@@ -234,8 +235,8 @@ ul.links{
     line-height: 22px;
     padding: 10px 0 20px;
 }
-.card3_text button{
-    z-index: 1;
+.card3_text a{
+    z-index: 2;
     margin: 10px 0;
     border-color: #fff;
     color: #fff;
@@ -333,7 +334,6 @@ ul.links{
 .grid_box{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3,308px);
     gap: 25px;
 }
 .item{
@@ -342,6 +342,7 @@ ul.links{
     display: flex;
     align-items: center;
     column-gap: 15px;
+    /* box-shadow: 0 0 9px 1px rgba(0, 0, 0, 0.2); */
     position: relative;
 }
 
@@ -361,7 +362,6 @@ ul.links{
     justify-content: center;
     text-decoration: none;
     cursor: pointer;
-    
 }
 .main_btn.card_btn{
     border: 3px solid #ecebe9;

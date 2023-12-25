@@ -16,7 +16,7 @@ footer{
     /* position: absolute; */
     bottom: 0;
     /*background: linear-gradient(to right, #00093c, #2d0b00);*/
-    background: rgb(89, 87, 87);
+    background: #000;
     color:  #fff;
     padding: 70px 0 3px;
     border-top-right-radius: 125px;
