@@ -66,6 +66,8 @@ const addProductsToDom = () => {
                 <img class="item_img" src="${prod.image}" alt="">
                 <div class="card_text">
                     <h4>${prod.name}</h4>
+                    <p>${prod.description}</p>
+                    <p>stockQuantity : ${prod.stockQuantity}</>
                     <div class="rating">
                     <i class="star fa-solid fa-star star_done"></i>
                         <i class="star fa-solid fa-star star_done"></i>
@@ -76,11 +78,12 @@ const addProductsToDom = () => {
                     <h3 class="price">${prod.price} $</h3>
                     ${
                       loggedInUser.isAdmin
-                        ? `<button class="main_btn card_btn edit-btn">Edit</button><br />
+                        ? `<button class="main_btn card_btn edit-btn">Edit</button>
                             <button class="main_btn card_btn delete-btn">Delete</button>`
                         : `<button class="main_btn card_btn add-to-cart-btn">Add to Cart</button>`
                     }
                     <span id="prod_code">code: ${prod.id}</span>
+                    <span class="category">category:${prod.category}</span>
                 </div>
       `;
 

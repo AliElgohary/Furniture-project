@@ -229,3 +229,21 @@ transition: .2s;
   background-color: #000;
   color: #F2C94C;
 }
+.category{
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  color: #3233349b;
+  font-size: 10px;
+  font-weight: 600;
+}
+.card_text p{
+  font-size: 12px;
+  margin-top: 5px;
+  color: #3233349b;
+}
+/* .main_btn.card_btn.edit_btn , .main_btn.card_btn.delete_btn{
+  width: 100px;
+  height: 35px;
+  background-color: red;
+} */
