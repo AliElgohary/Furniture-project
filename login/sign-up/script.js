@@ -6,6 +6,7 @@ class User {
     this.isAdmin = isAdmin;
     if (!this.isAdmin) {
       this.cart = [];
+      this.orderHistory = [];
     }
   }
 }
