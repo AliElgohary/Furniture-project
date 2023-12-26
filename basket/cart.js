@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const users = JSON.parse(localStorage.getItem("users"));
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
   const cartInfo = document.getElementById("cartInfo");
   const orderHistorySection = document.querySelector(".order-history-section");
@@ -82,52 +81,49 @@ document.addEventListener("DOMContentLoaded", function () {
   updateOrderHistoryDisplay();
 
   const checkoutButton = document.getElementById("confirmOrder");
-  // ... (previous code)
-
-checkoutButton.addEventListener("click", function () {
-  if (user) {
-    if (!user.orderHistory) {
-      user.orderHistory = [];
-    }
-    const orderCopy = user.cart.map((item) => ({ ...item }));
-    if (orderCopy.length > 0) {
-      user.orderHistory.push(orderCopy);
-    }
-
-    const cartInfo = user.cart.map((item) => ({ ...item })); // Copy the cart items
-    user.cart = [];
-
-    localStorage.setItem("loggedInUser", JSON.stringify(user));
-
-    const userIndex = users.findIndex((u) => u.id === user.id);
-
-    if (userIndex !== -1) {
-      if (!users[userIndex].orderHistory) {
-        users[userIndex].orderHistory = [];
+  checkoutButton.addEventListener("click", function () {
+    if (user) {
+      const users = JSON.parse(localStorage.getItem("users"));
+  
+      const loggedInUserIndex = users.findIndex((u) => u.email === user.email);
+  
+      if (loggedInUserIndex !== -1) {
+        const orderCopy = user.cart.map((item) => ({ ...item }));
+  
+        if (orderCopy.length > 0) {
+          if (!users[loggedInUserIndex].orderHistory) {
+            users[loggedInUserIndex].orderHistory = [];
+          }
+  
+          users[loggedInUserIndex].orderHistory.push(orderCopy);
+  
+          users[loggedInUserIndex].cart = [];
+  
+          
+          user.cart = [];
+          user.orderHistory = users[loggedInUserIndex].orderHistory;
+          localStorage.setItem("loggedInUser", JSON.stringify(user));
+  
+          localStorage.setItem("users", JSON.stringify(users));
+  
+          updateCartDisplay();
+          updateOrderHistoryDisplay();
+        } else {
+          console.log("Cart is empty. Cannot checkout.");
+        }
+      } else {
+        console.log("Logged-in user not found in the users array.");
       }
-
-      users[userIndex].orderHistory.push(cartInfo);
-      console.log(users[userIndex].orderHistory);
-      localStorage.setItem("users", JSON.stringify(users));
     } else {
-      console.error("Logged-in user not found in users array.");
+      console.log("User is not logged in. Cannot checkout.");
     }
-
-    updateCartDisplay();
-    updateOrderHistoryDisplay();
-  } else {
-    console.log("User is not logged in. Cannot checkout.");
-  }
-});
-
-
-
+  });
+  
   function displayAllOrders() {
     orderHistoryTable.innerHTML = "";
 
     const allUsers = getAllUsers();
 
-    // Loop through all users and display their orders
     allUsers.forEach((currentUser) => {
       if (currentUser.orderHistory && currentUser.orderHistory.length > 0) {
         const userOrders = currentUser.orderHistory;
@@ -140,7 +136,7 @@ checkoutButton.addEventListener("click", function () {
           `;
           orderHistoryTable.appendChild(orderRow);
 
-          order.forEach((item, itemIndex) => {
+          order.forEach((item , itemIndex) => {
             const orderItemRow = document.createElement("tr");
 
             orderItemRow.innerHTML = `
