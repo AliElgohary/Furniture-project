@@ -98,6 +98,29 @@ const addToCart = (productId) => {
     alert("Product is already in the cart!");
   }
 };
+
+
+const addToWishlist = (productId) => {
+  if (!loggedInUser.wishlist) {
+    loggedInUser.wishlist = [];
+  }
+
+  const alreadyInWishlist = loggedInUser.wishlist.some((item) => item.id === productId);
+
+  if (!alreadyInWishlist) {
+    const selectedProduct = allProd.find((prod) => prod.id === productId);
+    loggedInUser.wishlist = [...loggedInUser.wishlist, selectedProduct];
+    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+    console.log(loggedInUser);
+    wishlistCount();
+  } else {
+    alert("Product is already in the wishlist!");
+  }
+};
+
+
+
+
 const prodCount=()=>{
   const prod_count=document.getElementById("prod_count");
   if(loggedInUser.cart){
@@ -106,6 +129,16 @@ const prodCount=()=>{
   return;
 }
 prodCount()
+
+const wishlistCount = () => {
+  const wishlistCountElement = document.getElementById("wishlist_count");
+  if (loggedInUser.wishlist) {
+    wishlistCountElement.innerHTML = loggedInUser.wishlist.length;
+  }
+  return;
+};
+
+wishlistCount();
 
 const addProductsToDom = (search_case=[]) => {
   products_dom.innerHTML = "";
@@ -132,7 +165,9 @@ const addProductsToDom = (search_case=[]) => {
                       loggedInUser.isAdmin
                         ? `<button class="main_btn card_btn edit-btn">Edit</button>
                             <button class="main_btn card_btn delete-btn">Delete</button>`
-                        : `<button class="main_btn card_btn add-to-cart-btn">Add to Cart</button>`
+                        : `<button class="main_btn card_btn add-to-cart-btn">Add to Cart</button> <br />
+                        <button class="main_btn card_btn add-to-wish-btn">Add to wishlist</button>
+                        `
                     }
                     <span id="prod_code">code: ${prod.id}</span>
                     <span class="category">category:${prod.category}</span>
@@ -157,6 +192,10 @@ const addProductsToDom = (search_case=[]) => {
         addToCartButton.addEventListener("click", () => {
           addToCart(prod.id);
         });
+        let addTowishListButton = new_prod.querySelector('.add-to-wish-btn');
+        addTowishListButton.addEventListener("click", () => {
+          addToWishlist(prod.id)
+        });
       }
 
       products_dom.appendChild(new_prod);
@@ -164,6 +203,8 @@ const addProductsToDom = (search_case=[]) => {
   }
 };
 // *******************************add new_product*******************
+
+
 
 
 add_prod_btn.addEventListener("click", () => {
